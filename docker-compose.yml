@@ -1,0 +1,20 @@
+web:
+    image: vincentchalamon/symfony
+    ports: 
+        - "18080:80"
+        - "18900:9000"
+    links:
+        - "mysql"
+    volumes:
+        - ./blog:/var/www
+
+mysql:
+    image: mysql
+    environment:
+        MYSQL_DATABASE: "symfony"
+        MYSQL_USER: "root"
+        MYSQL_ROOT_PASSWORD: "123456"
+    ports:
+        - "3307:3306"
+    volumes:
+        - ./data/mysql-data2:/var/lib/mysql
